@@ -85,7 +85,7 @@ def main():
         description='Downloads FaceForensics v2 public data release.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
-    parser.add_argument('output_path', type=str, help='Output directory.')
+    parser.add_argument('output_path', type=str, default = 'D:/FaceForensics/',help='Output directory.')
     parser.add_argument('-d', '--dataset', type=str, default='all',
                         help='Which dataset to download, either pristine or '
                              'manipulated data or the downloaded youtube '
