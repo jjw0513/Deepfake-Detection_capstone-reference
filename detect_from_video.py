@@ -137,7 +137,7 @@ def test_full_image_network(video_path, model_path, output_path, start_frame=0, 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     p.add_argument('--video_path', '-i', type=str)
-    p.add_argument('--model_path', '-mi', type=str, default='./output/deepfake_xception_kfold/new.pth')
+    p.add_argument('--model_path', '-mi', type=str, default='./pretrained_model/deepfake_c0_xception.pkl')
     p.add_argument('--output_path', '-o', type=str, default='.')
     p.add_argument('--start_frame', type=int, default=0)
     p.add_argument('--end_frame', type=int, default=None)

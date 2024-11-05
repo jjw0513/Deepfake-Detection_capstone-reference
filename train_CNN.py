@@ -149,5 +149,5 @@ if __name__ == '__main__':
     parse.add_argument('--epoches', '-e', type=int, default=50)
     parse.add_argument('--model_name', '-mn', type=str, default='xception_model.pth')
     parse.add_argument('--continue_train', type=bool, default=False)
-    parse.add_argument('--model_path', '-mp', type=str, default='./pretrained_model/deepfake_c0_xception.pkl')
+    parse.add_argument('--model_path', '-mp', type=str, default='./pretrained_model/ffpp_c23.pkl')
     main()

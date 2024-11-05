@@ -45,7 +45,7 @@ if __name__ == '__main__':
 	parse = argparse.ArgumentParser(
 		formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	parse.add_argument('--batch_size', '-bz', type=int, default=32)
-	parse.add_argument('--test_list', '-tl', type=str, default='./labels.txt')
-	parse.add_argument('--model_path', '-mp', type=str, default='./new_w.pth')
+	parse.add_argument('--test_list', '-tl', type=str, default='./last_labels.txt')
+	parse.add_argument('--model_path', '-mp', type=str, default='./pretrained_model/ffpp_c23.pth')
 	main()
 	print('Hello world!!!')
