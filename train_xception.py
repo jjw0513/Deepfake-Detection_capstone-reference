@@ -14,10 +14,10 @@ from torchvision import transforms
 from network.models import model_selection
 from dataset.mydataset import MyDataset
 
-# 데이터 변환 설정 - real과 fake 모두 동일한 증강 기법 적용
+#TODO Data Augmetntation FOR East real/fake
 xception_default_data_transforms = {
     'train': transforms.Compose([
-        transforms.Resize((299, 299)),  # Xception 모델 입력 크기
+        transforms.Resize((299, 299)),  # Xception model input
         transforms.RandomHorizontalFlip(),  # 랜덤 좌우 반전
         transforms.RandomRotation(degrees=10),  # 랜덤 회전
         transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),  # 색상 조절
@@ -59,12 +59,12 @@ def main():
     if not os.path.exists(output_path):
         os.makedirs(output_path)
 
-    wandb.init(project="Deepfake-Xception", name='train_Xception_with_kfold_2')
+    wandb.init(project="Deepfake-Xception", name='train_Xception_with_kfold_c0+east')
     wandb.config.update(args)
 
     full_dataset = MyDataset(txt_path=train_list, transform=xception_default_data_transforms['train'])
 
-    # 클래스 가중치 계산 (데이터 불균형 해결)
+    #TODO Calculate Class Weights
     class_weights = calculate_class_weights(full_dataset)
     criterion = nn.CrossEntropyLoss(weight=class_weights)
 
@@ -185,5 +185,5 @@ if __name__ == '__main__':
     parse.add_argument('--gamma', type=float, default=0.5, help="Gamma value for LR scheduler")
     parse.add_argument('--k_folds', type=int, default=5, help="Number of folds for KFold cross-validation")
     parse.add_argument('--continue_train', type=bool, default=True, help="Whether to continue training from saved model weights")
-    parse.add_argument('--model_path', '-mp', type=str, default='./output/deepfake_xception_kfold/new.pth', help="Path to model weights to load if continuing training")
+    parse.add_argument('--model_path', '-mp', type=str, default='C:\Users\hail\Deepfake-Detection_capstone-reference\output\deepfake_xception_kfold_2\best_model_fold_1.pkl', help="Path to model weights to load if continuing training")
     main()
