@@ -136,16 +136,16 @@ def test_full_image_network(video_path, model_path, output_path, start_frame=0, 
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    p.add_argument('--video_path', '-i', type=str, default = 'D:/test.mp4')
+    p.add_argument('--video_path', '-i', type=str, default = './jung1.mov')
     #p.add_argument('--model_path', '-mi', type=str, default='./output/deepfake_xception_kfold/new.pth')
-    p.add_argument('--model_path', '-mi', type=str, default='./pretrained_model/deepfake_c0_xception.pkl')
-    p.add_argument('--output_path', '-o', type=str, default='D:/')
+    p.add_argument('--model_path', '-mi', type=str, default='/home/hail/Documents/jjw/output/deepfake_xception_last3/best_model_fold_5.pkl')
+    p.add_argument('--output_path', '-o', type=str, default='./')
     p.add_argument('--start_frame', type=int, default=0)
     p.add_argument('--end_frame', type=int, default=None)
     args = p.parse_args()
 
     video_path = args.video_path
-    if video_path.endswith('.mp4') or video_path.endswith('.avi'):
+    if video_path.endswith('.mp4') or video_path.endswith('.avi') or video_path.endswith(('.mov')):
         test_full_image_network(**vars(args))
     else:
         videos = os.listdir(video_path)
